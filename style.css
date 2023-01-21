@@ -15,23 +15,27 @@ body{
 main{
     width: 70%;
     max-width: 500px;
-    height:600px ;
+    height:900px ;
     background-color: blueviolet;
+    border-radius: 20px;
 }
 
 #checkout-title{
-    margin: 30px;
+    margin: 10px;
     text-align: center;
 }
 .product{
     display: flex;
     justify-content: space-evenly;
-    background-color: aqua;
+    align-items: center;
+ 
+    margin: 10px 0;
    
 }
 
 img{
-    width: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px;
     
 }
@@ -41,7 +45,7 @@ h2{
 }
  p strong{
     color: orangered;
-    margin: 5px;
+    margin: 3px;
  }
 
  p span{
@@ -50,7 +54,7 @@ h2{
  .quantity-controller{
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin: 5px;
     border: 1px solid black;
     border-radius: 6px;
     padding: 10px;
@@ -71,7 +75,11 @@ h2{
     padding: 7px;
     border-radius: 7px;
     border: none;
-    margin: 10px;
+    margin: 5px;
     background-color: deeppink;
 
+ }
+
+ .product-line-price{
+    margin: 5px;
  }
