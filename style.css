@@ -1,4 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Yeon+Sung&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Yeon Sung', cursive;
 }
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 70%;
+    max-width: 500px;
+    height:600px ;
+    background-color: blueviolet;
+}
+
+#checkout-title{
+    margin: 30px;
+    text-align: center;
+}
+.product{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: aqua;
+   
+}
+
+img{
+    width: 200px;
+    border-radius: 20px;
+    
+}
+
+h2{
+    margin: 5px;
+}
+ p strong{
+    color: orangered;
+    margin: 5px;
+ }
+
+ p span{
+    text-decoration: line-through;
+ }
+ .quantity-controller{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    width: 80px;
+ }
+
+ i{
+    border: 1px solid black;  
+    padding: 4px;
+    border-radius: 4px;
+ }
+
+ .quantity{
+    margin:0 13px;
+ }
+
+ .remove-product{
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+    margin: 10px;
+    background-color: deeppink;
+
+ }
