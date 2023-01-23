@@ -15,7 +15,7 @@ window.addEventListener("load", ()=>{ //sayfa yüklendiğinde ilk açıldığın
 
     //localStorage de tutulan veriler tarayıcı kapansa da kaybolmaz sessionStorage de tutulan veriler tarayıcı kapandığı zaman veriler gider.
 })
-
+//fonksiyona yazmamızın nedeni; fonksiyonun çalışması click olayına bağlı. click olduğunda fonksiyon çalışacak.
 const productsDiv = document.querySelector(".products") //bütün alanı seçtik.
 productsDiv.addEventListener("click", (event) => {  //bütün alandan tıklamak istediğimiz yeri seçtik.
     // console.log(event.target); //tıkladığımız yeri yakalıyor. dış sınır belirleniyor sonra içeriden yakalama yapılıyor buna capturing deniyor. parentten child e doğru gidiyor.
@@ -29,38 +29,33 @@ productsDiv.addEventListener("click", (event) => {  //bütün alandan tıklamak 
 
             }
         }
-
-    
         
     }else if (event.target.className == "fa-solid fa-plus"){ //tıkladığımız yer + ise
-        event.target.previousElementSibling.innerText++; // +nın bir öncesi değeri bir arttır
+        event.target.parentElement.querySelector(".quantity").innerText++; // +nın bir öncesi değeri bir arttır
     }else if (event.target.className == "remove-product"){ //remove tıkladığımız zaman
-        // event.target.parentElement.parentElement.parentElement.remove() // 
+        
         event.target.closest(".product").remove()
     }
 
-    calculateProductPrice(event.target);
-    calculateCartPrice()
-
+            calculateProductPrice(event.target)
+            calculateCardPrice()
 });
 
 const calculateProductPrice = (btn) => { //ürün fiyatı ile ürün sayısını carpıp productTotale yazdıracağız
 
-    const productInfoDiv = btn.parentElement.parentElement;
+    const productInfoDiv = btn.parentElement.parentElement; //
 
-    const price = number(productInfoDiv.querySelector(".product-price strong").innerText);
-    productTotalDiv.innerText = (price *quantity).toFixed(2);
-    const quantity = Number(productInfoDiv.querySelector(".quantity").innerText);
-    const productTotalDiv = productInfoDiv.querySelector(".price");
-       
+    const price = Number(productInfoDiv.querySelector(".product-price strong").innerText);  //25,98 i aldık
+    const quantity = Number(productInfoDiv.querySelector(".quantity").innerText)
+    const productTotalDiv = productInfoDiv.querySelector(".price")
+       productTotalDiv.innerText =(price * quantity).toFixed(2);
 
 }
 
 
 const calculateCardPrice = () => {
-    const productTotalPricesDivs = document.querySelectorAll(".price");
-    [...productTotalPricesDivs].reduce((acc, price)=> acc+ Number(price.innerText), 0);
-    const taxPrice = subtotal * lacalStorage.getItem("taxRate")
-    
-    document.querySelector("#subtotalCart").innerText = subtotal.toFixed(2)
+    const productTotalPricesDiv = document.querySelector(".price")
+    [...productTotalPricesDiv]
 }
+
+
