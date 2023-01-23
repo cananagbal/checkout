@@ -1,11 +1,11 @@
-const taxRate = 0.18; //vergiyi değişkene atadık.
+const taxtRate = 0.18; //vergiyi değişkene atadık.
 const shippingPrice = 15 // kargo ücreti değişecekse diye kargo ücretini de bir değişkene atadık
 // projede değişkenlik gösterecek şeyleri değişkene atıyoruz.
 
 const shippingFreePrice = 300; //300 dolara kadar kargo ücreti bedava, yarın değiştirirsek diye değişkene atıyoruz. 
 
 window.addEventListener("load", ()=>{ //sayfa yüklendiğinde ilk açıldığında veriler DOMa ilk basıldığında değişkenleri localStoragede tutmak istiyoruz.
-    localStorage.setItem("taxRate", taxRate);  //localStorage gönderme yapıyoruz key ve value şeklinde
+    localStorage.setItem("taxtRate", taxtRate);  //localStorage gönderme yapıyoruz key ve value şeklinde
     localStorage.setItem("shippingPrice",shippingPrice); //locale setItem diyerek gönderiyoruz.
     localStorage.setItem("shippingFreePrice", shippingFreePrice);
 
@@ -54,8 +54,17 @@ const calculateProductPrice = (btn) => { //ürün fiyatı ile ürün sayısını
 
 
 const calculateCardPrice = () => {
-    const productTotalPricesDiv = document.querySelector(".price")
-    [...productTotalPricesDiv]
+    const productsTotalPricesDiv = document.querySelectorAll(".price");
+    const subtotal = [...productsTotalPricesDiv].reduce((acc, price)=> acc + Number(price.innerText), 0);
+    const taxtPrice = subtotal * localStorage.getItem("taxtRate")
+    const shippingPrice = parseFloat(subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice") ? localStorage.getItem("shippingPrice") : 0)
+
+    const totalCart = subtotal + taxtPrice + shippingPrice;
+
+    document.querySelector("#subtotalCart").innerText =subtotal.toFixed(2);
+    document.querySelector("#taxtRateCart").innerText =taxtPrice.toFixed(2);
+    document.querySelector("#shippingCart").innerText =shippingPrice.toFixed(2);
+    document.querySelector("#totalCart").innerText =totalCart.toFixed(2);
 }
 
 
